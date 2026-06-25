@@ -15,6 +15,11 @@ export default function LoginPage() {
 
   return (
     <div className="login-page">
+      {/* Disclaimer Banner */}
+      <div className="login-disclaimer">
+        ⚠️ <strong>Developer Demo Project:</strong> This is a clone built for portfolio purposes. It is <strong>NOT</strong> affiliated with Netflix. Please do not enter real login credentials.
+      </div>
+
       {/* Background Hero */}
       <div className="login-bg">
         <div className="login-bg__gradient" />

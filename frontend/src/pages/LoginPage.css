@@ -275,3 +275,35 @@
   color: #fff;
 }
 
+/* ── Disclaimer Banner ──────────────────────────────────────────────── */
+.login-disclaimer {
+  position: relative;
+  z-index: 100;
+  width: 100%;
+  background-color: #e50914;
+  color: #fff;
+  text-align: center;
+  padding: 12px 24px;
+  font-size: 0.875rem;
+  line-height: 1.4;
+  font-weight: 400;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+  animation: fadeInDown 0.5s ease;
+}
+
+.login-disclaimer strong {
+  font-weight: 700;
+}
+
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
