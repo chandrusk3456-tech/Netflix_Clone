@@ -1,0 +1,245 @@
+/* ── Login Form ───────────────────────────────────────────────────── */
+.login-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.login-form--shake {
+  animation: shake 0.5s ease;
+}
+
+/* ── Error Banner ─────────────────────────────────────────────────── */
+.login-form__error-banner {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  background: rgba(232, 124, 3, 0.15);
+  border: 1px solid rgba(232, 124, 3, 0.4);
+  border-left: 4px solid var(--netflix-error);
+  border-radius: var(--radius-sm);
+  padding: 14px 16px;
+  font-size: 0.9rem;
+  color: var(--netflix-text);
+  line-height: 1.5;
+  animation: fadeInUp 0.3s ease;
+}
+
+.login-form__error-icon {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+  color: var(--netflix-error);
+  margin-top: 1px;
+}
+
+/* ── Float-Label Input Field ──────────────────────────────────────── */
+.login-form__field {
+  position: relative;
+  border-radius: var(--radius-sm);
+  background: var(--netflix-input-bg);
+  border: 1px solid rgba(255,255,255,0.1);
+  transition:
+    border-color var(--transition),
+    background var(--transition),
+    box-shadow var(--transition);
+}
+
+.login-form__field:focus-within {
+  background: var(--netflix-input-bg-focus);
+  border-color: rgba(255,255,255,0.35);
+  box-shadow: 0 0 0 2px rgba(255,255,255,0.06);
+}
+
+.login-form__field--error {
+  border-color: var(--netflix-error) !important;
+  box-shadow: 0 0 0 1px rgba(232, 124, 3, 0.3) !important;
+}
+
+/* ── Input ────────────────────────────────────────────────────────── */
+.login-form__input {
+  width: 100%;
+  height: 60px;
+  padding: 26px 16px 10px;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: var(--netflix-text);
+  font-size: 1rem;
+  font-family: var(--font-primary);
+  caret-color: var(--netflix-text);
+}
+
+.login-form__field--password .login-form__input {
+  padding-right: 60px;
+}
+
+/* ── Floating Label ───────────────────────────────────────────────── */
+.login-form__label {
+  position: absolute;
+  left: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--netflix-text-muted);
+  font-size: 1rem;
+  pointer-events: none;
+  transition:
+    top 0.15s ease,
+    font-size 0.15s ease,
+    color 0.15s ease;
+  transform-origin: left top;
+}
+
+/* Lifted state (focused or has value) */
+.login-form__field--active .login-form__label,
+.login-form__field:focus-within .login-form__label {
+  top: 12px;
+  transform: none;
+  font-size: 0.75rem;
+  color: rgba(255,255,255,0.55);
+}
+
+/* ── Field Error Text ─────────────────────────────────────────────── */
+.login-form__field-error {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 6px 16px 10px;
+  font-size: 0.8125rem;
+  color: var(--netflix-error);
+  animation: fadeInUp 0.2s ease;
+  line-height: 1.4;
+}
+
+/* ── Password Show/Hide ───────────────────────────────────────────── */
+.login-form__pw-toggle {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: transparent;
+  border: none;
+  color: rgba(255,255,255,0.7);
+  font-size: 0.75rem;
+  font-weight: 700;
+  font-family: var(--font-primary);
+  letter-spacing: 0.08em;
+  cursor: pointer;
+  padding: 4px 6px;
+  border-radius: 2px;
+  transition: color var(--transition);
+}
+
+.login-form__pw-toggle:hover {
+  color: var(--netflix-text);
+}
+
+/* ── Submit Button ────────────────────────────────────────────────── */
+.login-form__submit {
+  width: 100%;
+  height: 52px;
+  margin-top: 8px;
+  background: var(--netflix-red);
+  color: white;
+  border: none;
+  border-radius: var(--radius-sm);
+  font-size: 1rem;
+  font-weight: 700;
+  font-family: var(--font-primary);
+  cursor: pointer;
+  transition:
+    background var(--transition),
+    transform 0.1s ease,
+    box-shadow var(--transition);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  letter-spacing: 0.02em;
+}
+
+.login-form__submit:hover:not(:disabled) {
+  background: var(--netflix-red-hover);
+  box-shadow: 0 4px 20px rgba(229, 9, 20, 0.4);
+  transform: translateY(-1px);
+}
+
+.login-form__submit:active:not(:disabled) {
+  transform: translateY(0);
+  box-shadow: none;
+  background: var(--netflix-red-dark);
+}
+
+.login-form__submit:disabled {
+  background: rgba(229, 9, 20, 0.7);
+  cursor: not-allowed;
+}
+
+/* ── Spinner ──────────────────────────────────────────────────────── */
+.login-form__spinner {
+  width: 22px;
+  height: 22px;
+  border: 3px solid rgba(255,255,255,0.3);
+  border-top-color: white;
+  border-radius: 50%;
+  animation: spin 0.7s linear infinite;
+}
+
+/* ── OR Divider ───────────────────────────────────────────────────── */
+.login-form__or {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 4px 0;
+}
+
+.login-form__or-line {
+  flex: 1;
+  height: 1px;
+  background: rgba(255,255,255,0.15);
+}
+
+.login-form__or-text {
+  font-size: 0.875rem;
+  color: var(--netflix-text-muted);
+  font-weight: 500;
+}
+
+/* ── Use Code Button ──────────────────────────────────────────────── */
+.login-form__code-btn {
+  width: 100%;
+  height: 44px;
+  background: rgba(255,255,255,0.08);
+  color: var(--netflix-text);
+  border: 1px solid rgba(255,255,255,0.2);
+  border-radius: var(--radius-sm);
+  font-size: 0.9375rem;
+  font-weight: 500;
+  font-family: var(--font-primary);
+  cursor: pointer;
+  transition:
+    background var(--transition),
+    border-color var(--transition);
+}
+
+.login-form__code-btn:hover {
+  background: rgba(255,255,255,0.13);
+  border-color: rgba(255,255,255,0.35);
+}
+
+/* ── Forgot Password ──────────────────────────────────────────────── */
+.login-form__forgot {
+  text-align: center;
+  font-size: 0.9375rem;
+  color: var(--netflix-text-muted);
+  text-decoration: none;
+  transition: color var(--transition);
+  padding: 4px 0;
+}
+
+.login-form__forgot:hover {
+  text-decoration: underline;
+  color: var(--netflix-text);
+}
+
+

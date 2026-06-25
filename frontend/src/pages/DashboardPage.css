@@ -1,0 +1,563 @@
+/* ── Dashboard Page ────────────────────────────────────────────────── */
+.dashboard {
+  min-height: 100vh;
+  background: var(--netflix-dark);
+  color: var(--netflix-text);
+  overflow-x: hidden;
+}
+
+/* ── Navbar ────────────────────────────────────────────────────────── */
+.dash-nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 56px;
+  height: 68px;
+  background: linear-gradient(to bottom, rgba(0,0,0,0.85) 0%, transparent 100%);
+  transition: background 0.4s ease;
+}
+
+.dash-nav--scrolled {
+  background: rgba(20, 20, 20, 0.97);
+  box-shadow: 0 2px 20px rgba(0,0,0,0.5);
+}
+
+.dash-nav__left {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+}
+
+.dash-nav__links {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.dash-nav__link {
+  background: transparent;
+  border: none;
+  color: rgba(255,255,255,0.75);
+  font-size: 0.875rem;
+  font-family: var(--font-primary);
+  cursor: pointer;
+  padding: 6px 10px;
+  border-radius: var(--radius-sm);
+  transition: color var(--transition), background var(--transition);
+  white-space: nowrap;
+}
+
+.dash-nav__link:hover {
+  color: var(--netflix-text);
+  background: rgba(255,255,255,0.06);
+}
+
+.dash-nav__link--active {
+  color: var(--netflix-text);
+  font-weight: 600;
+}
+
+.dash-nav__right {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.dash-nav__icon-btn {
+  background: transparent;
+  border: none;
+  color: var(--netflix-text);
+  cursor: pointer;
+  padding: 6px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background var(--transition);
+}
+
+.dash-nav__icon-btn:hover {
+  background: rgba(255,255,255,0.1);
+}
+
+/* ── Avatar & Profile Menu ─────────────────────────────────────────── */
+.dash-nav__profile {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+}
+
+.dash-nav__avatar {
+  width: 34px;
+  height: 34px;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: white;
+  text-transform: uppercase;
+  user-select: none;
+}
+
+.dash-nav__avatar--sm {
+  width: 30px;
+  height: 30px;
+  font-size: 0.8rem;
+  flex-shrink: 0;
+}
+
+.dash-nav__chevron {
+  transition: transform 0.2s ease;
+  color: rgba(255,255,255,0.7);
+}
+
+.dash-nav__chevron--up {
+  transform: rotate(180deg);
+}
+
+/* Dropdown Menu */
+.dash-nav__menu {
+  position: absolute;
+  top: calc(100% + 12px);
+  right: 0;
+  min-width: 220px;
+  background: rgba(20, 20, 20, 0.97);
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: var(--radius-md);
+  padding: 8px 0;
+  box-shadow: 0 8px 40px rgba(0,0,0,0.6);
+  animation: fadeInUp 0.2s ease;
+  backdrop-filter: blur(12px);
+}
+
+.dash-nav__menu-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 16px;
+}
+
+.dash-nav__menu-name {
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: var(--netflix-text);
+}
+
+.dash-nav__menu-plan {
+  font-size: 0.75rem;
+  color: var(--netflix-success);
+  margin-top: 2px;
+}
+
+.dash-nav__menu-divider {
+  border: none;
+  border-top: 1px solid rgba(255,255,255,0.1);
+  margin: 6px 0;
+}
+
+.dash-nav__menu-item {
+  display: block;
+  width: 100%;
+  text-align: left;
+  background: transparent;
+  border: none;
+  color: rgba(255,255,255,0.8);
+  font-size: 0.875rem;
+  font-family: var(--font-primary);
+  padding: 10px 16px;
+  cursor: pointer;
+  transition: background var(--transition), color var(--transition);
+}
+
+.dash-nav__menu-item:hover {
+  background: rgba(255,255,255,0.07);
+  color: var(--netflix-text);
+}
+
+.dash-nav__menu-item--signout {
+  color: rgba(255,255,255,0.6);
+  font-size: 0.8125rem;
+}
+
+.dash-nav__menu-item--signout:hover {
+  color: var(--netflix-red);
+}
+
+/* ── Hero Banner ───────────────────────────────────────────────────── */
+.dash-hero {
+  position: relative;
+  height: 85vh;
+  min-height: 500px;
+  display: flex;
+  align-items: flex-end;
+  overflow: hidden;
+}
+
+.dash-hero__bg {
+  position: absolute;
+  inset: 0;
+  background:
+    url('https://occ-0-8407-2186.1.nflxso.net/dnm/api/v6/6gmvu2hxdfnQ55LZZjyzYR4kzGk/AAAABdYJkjkj8nL9WsSsRFJDg1JNXHYmCVzVqw5D4BYXr9RMJ-0z7JVBG2yoKHEFqCiEFt7j7s5XpRfJCKl1nYkJ5GKqFpVf4-JCiMfJRQH.jpg?r=a4d')
+    center / cover no-repeat,
+    linear-gradient(135deg, #0d0d0d 0%, #1a0a0a 50%, #0d1117 100%);
+  filter: brightness(0.55);
+}
+
+.dash-hero__content {
+  position: relative;
+  z-index: 2;
+  padding: 0 56px 80px;
+  max-width: 560px;
+  animation: fadeInUp 0.7s ease;
+}
+
+.dash-hero__badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(229, 9, 20, 0.15);
+  border: 1px solid rgba(229, 9, 20, 0.4);
+  border-radius: 20px;
+  padding: 4px 12px;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--netflix-red);
+  margin-bottom: 16px;
+  letter-spacing: 0.04em;
+}
+
+.dash-hero__title {
+  font-size: 3.5rem;
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: -1px;
+  text-shadow: 2px 2px 8px rgba(0,0,0,0.5);
+  margin-bottom: 14px;
+}
+
+.dash-hero__meta {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  font-size: 0.9375rem;
+  color: rgba(255,255,255,0.8);
+  margin-bottom: 16px;
+}
+
+.dash-hero__match {
+  color: var(--netflix-success);
+  font-weight: 700;
+}
+
+.dash-hero__rating {
+  border: 1px solid rgba(255,255,255,0.5);
+  padding: 1px 6px;
+  border-radius: 2px;
+  font-size: 0.8125rem;
+}
+
+.dash-hero__hd {
+  border: 1px solid rgba(255,255,255,0.5);
+  padding: 1px 6px;
+  border-radius: 2px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+}
+
+.dash-hero__desc {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: rgba(255,255,255,0.85);
+  margin-bottom: 28px;
+  text-shadow: 1px 1px 4px rgba(0,0,0,0.6);
+}
+
+.dash-hero__actions {
+  display: flex;
+  gap: 12px;
+}
+
+.dash-hero__btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 28px;
+  border: none;
+  border-radius: 6px;
+  font-size: 1rem;
+  font-weight: 700;
+  font-family: var(--font-primary);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  letter-spacing: 0.02em;
+}
+
+.dash-hero__btn--play {
+  background: white;
+  color: black;
+}
+
+.dash-hero__btn--play:hover {
+  background: rgba(255,255,255,0.85);
+  transform: scale(1.03);
+}
+
+.dash-hero__btn--info {
+  background: rgba(109, 109, 110, 0.6);
+  color: white;
+  backdrop-filter: blur(4px);
+}
+
+.dash-hero__btn--info:hover {
+  background: rgba(109, 109, 110, 0.8);
+  transform: scale(1.03);
+}
+
+.dash-hero__fade {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 200px;
+  background: linear-gradient(to bottom, transparent, var(--netflix-dark));
+  z-index: 1;
+}
+
+/* ── Welcome Toast ─────────────────────────────────────────────────── */
+.dash-toast {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 200;
+  background: rgba(20, 20, 20, 0.95);
+  border: 1px solid rgba(70, 211, 105, 0.35);
+  border-left: 4px solid var(--netflix-success);
+  border-radius: var(--radius-md);
+  padding: 14px 20px;
+  font-size: 0.9375rem;
+  color: var(--netflix-text);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.5);
+  animation: fadeInUp 0.5s ease 0.5s both;
+  backdrop-filter: blur(12px);
+}
+
+/* ── Content Rows ──────────────────────────────────────────────────── */
+.dash-content {
+  padding: 0 56px 60px;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.dash-row__title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: rgba(255,255,255,0.9);
+  margin-bottom: 16px;
+  letter-spacing: -0.3px;
+}
+
+.dash-row__scroller {
+  display: flex;
+  gap: 10px;
+  overflow-x: auto;
+  padding-bottom: 8px;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255,255,255,0.15) transparent;
+}
+
+.dash-row__scroller::-webkit-scrollbar {
+  height: 4px;
+}
+
+/* ── Content Cards ─────────────────────────────────────────────────── */
+.dash-card {
+  flex-shrink: 0;
+  width: 220px;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.dash-card:hover {
+  transform: scale(1.05) translateY(-4px);
+  box-shadow: 0 16px 48px rgba(0,0,0,0.6);
+  z-index: 10;
+}
+
+.dash-card__thumb {
+  position: relative;
+  height: 155px;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Poster image fills the entire thumb */
+.dash-card__img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  transition: transform 0.4s ease;
+}
+
+.dash-card:hover .dash-card__img {
+  transform: scale(1.08);
+}
+
+.dash-card__overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s ease;
+}
+
+.dash-card:hover .dash-card__overlay {
+  background: rgba(0,0,0,0.4);
+}
+
+.dash-card__play {
+  opacity: 0;
+  background: rgba(255,255,255,0.9);
+  border: none;
+  border-radius: 50%;
+  width: 46px;
+  height: 46px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: black;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+  transform: scale(0.8);
+}
+
+.dash-card:hover .dash-card__play {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.dash-card__title-badge {
+  position: absolute;
+  bottom: 10px;
+  left: 12px;
+  font-size: 2rem;
+  font-weight: 900;
+  color: rgba(255,255,255,0.2);
+  letter-spacing: -2px;
+  line-height: 1;
+  pointer-events: none;
+  text-shadow: 0 2px 8px rgba(0,0,0,0.3);
+}
+
+/* Progress bar */
+.dash-card__progress-bar {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: rgba(255,255,255,0.2);
+}
+
+.dash-card__progress-fill {
+  height: 100%;
+  background: var(--netflix-red);
+  border-radius: 0 0 0 0;
+}
+
+.dash-card__info {
+  padding: 10px 4px 4px;
+}
+
+.dash-card__name {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--netflix-text);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.dash-card__genre {
+  font-size: 0.75rem;
+  color: var(--netflix-text-muted);
+  margin-top: 3px;
+}
+
+.dash-card__progress-text {
+  font-size: 0.6875rem;
+  color: rgba(255,255,255,0.4);
+  margin-top: 3px;
+}
+
+/* ── Dashboard Footer ──────────────────────────────────────────────── */
+.dash-footer {
+  text-align: center;
+  padding: 40px 56px;
+  color: var(--netflix-text-muted);
+  font-size: 0.875rem;
+  border-top: 1px solid rgba(255,255,255,0.06);
+}
+
+/* ── Responsive ────────────────────────────────────────────────────── */
+@media (max-width: 900px) {
+  .dash-nav {
+    padding: 0 24px;
+    height: 60px;
+  }
+
+  .dash-nav__links {
+    display: none;
+  }
+
+  .dash-hero__content {
+    padding: 0 24px 60px;
+  }
+
+  .dash-hero__title {
+    font-size: 2.5rem;
+  }
+
+  .dash-content {
+    padding: 0 24px 40px;
+  }
+}
+
+@media (max-width: 480px) {
+  .dash-hero__title {
+    font-size: 2rem;
+  }
+
+  .dash-hero__desc {
+    display: none;
+  }
+
+  .dash-card {
+    width: 160px;
+  }
+
+  .dash-card__thumb {
+    height: 100px;
+  }
+}

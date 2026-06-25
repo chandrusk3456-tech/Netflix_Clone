@@ -1,0 +1,277 @@
+/* ── Login Page ───────────────────────────────────────────────────── */
+.login-page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  background: var(--netflix-black);
+}
+
+/* ── Background ───────────────────────────────────────────────────── */
+.login-bg {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  background-image:
+    url('https://assets.nflxext.com/ffe/siteui/vlv3/f841d4c7-10e1-40af-bcae-07a3f8dc141a/f6d7434e-d6de-4185-a6d4-c77a2d08737b/US-en-20220502-popsignuptwoweeks-perspective_alpha_website_large.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  filter: brightness(0.45);
+}
+
+.login-bg__gradient {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(0,0,0,0.5) 0%,
+    rgba(0,0,0,0.1) 40%,
+    rgba(0,0,0,0.1) 60%,
+    rgba(0,0,0,0.7) 100%
+  );
+}
+
+/* ── Header ───────────────────────────────────────────────────────── */
+.login-header {
+  position: relative;
+  z-index: 10;
+  padding: 28px 56px;
+  animation: fadeIn 0.6s ease;
+}
+
+.login-header__logo {
+  display: flex;
+  align-items: center;
+}
+
+/* ── Main ─────────────────────────────────────────────────────────── */
+.login-main {
+  position: relative;
+  z-index: 10;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 20px;
+}
+
+/* ── Card ─────────────────────────────────────────────────────────── */
+.login-card {
+  width: 100%;
+  max-width: 450px;
+  background: var(--netflix-card);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-radius: var(--radius-md);
+  padding: 60px 68px 40px;
+  box-shadow: var(--shadow-card);
+  animation: fadeInUp 0.5s ease;
+}
+
+.login-card__title {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--netflix-text);
+  margin-bottom: 28px;
+  letter-spacing: -0.5px;
+}
+
+/* ── Card Footer (Remember/Help) ──────────────────────────────────── */
+.login-card__footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 16px;
+}
+
+.login-card__remember {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.875rem;
+  color: var(--netflix-text-muted);
+  cursor: pointer;
+}
+
+.login-card__remember input[type="checkbox"] {
+  width: 16px;
+  height: 16px;
+  accent-color: var(--netflix-text-muted);
+  cursor: pointer;
+}
+
+.login-card__help {
+  font-size: 0.875rem;
+  color: var(--netflix-text-muted);
+  text-decoration: none;
+  transition: color var(--transition);
+}
+
+.login-card__help:hover {
+  text-decoration: underline;
+}
+
+/* ── Sign Up ──────────────────────────────────────────────────────── */
+.login-card__signup {
+  margin-top: 60px;
+  font-size: 1rem;
+  color: var(--netflix-text-muted);
+}
+
+.login-card__signup-link {
+  color: var(--netflix-text);
+  text-decoration: none;
+  font-weight: 500;
+  transition: color var(--transition);
+}
+
+.login-card__signup-link:hover {
+  text-decoration: underline;
+}
+
+/* ── reCAPTCHA note ───────────────────────────────────────────────── */
+.login-card__recaptcha {
+  margin-top: 16px;
+  font-size: 0.8125rem;
+  color: var(--netflix-text-muted);
+  line-height: 1.5;
+}
+
+.login-card__recaptcha-link {
+  color: #0071eb;
+  text-decoration: none;
+}
+
+.login-card__recaptcha-link:hover {
+  text-decoration: underline;
+}
+
+/* ── Footer ───────────────────────────────────────────────────────── */
+.login-footer {
+  position: relative;
+  z-index: 10;
+  background: rgba(0, 0, 0, 0.75);
+  padding: 32px 56px;
+  margin-top: auto;
+}
+
+.login-footer__inner {
+  max-width: 1000px;
+}
+
+.login-footer__contact {
+  font-size: 1rem;
+  color: var(--netflix-text-muted);
+  margin-bottom: 20px;
+}
+
+.login-footer__links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px 24px;
+  margin-bottom: 20px;
+}
+
+.login-footer__link {
+  font-size: 0.8125rem;
+  color: var(--netflix-text-muted);
+  text-decoration: none;
+  transition: color var(--transition);
+}
+
+.login-footer__link:hover {
+  color: var(--netflix-text);
+  text-decoration: underline;
+}
+
+.login-footer__lang-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: transparent;
+  border: 1px solid var(--netflix-text-muted);
+  color: var(--netflix-text-muted);
+  padding: 8px 14px;
+  border-radius: var(--radius-sm);
+  font-size: 0.875rem;
+  cursor: pointer;
+  transition: border-color var(--transition), color var(--transition);
+  font-family: var(--font-primary);
+}
+
+.login-footer__lang-btn:hover {
+  border-color: var(--netflix-text);
+  color: var(--netflix-text);
+}
+
+/* ── Responsive ───────────────────────────────────────────────────── */
+@media (max-width: 740px) {
+  .login-header {
+    padding: 20px 24px;
+  }
+
+  .login-card {
+    padding: 40px 32px 32px;
+    border-radius: 0;
+    max-width: 100%;
+    background: rgba(0, 0, 0, 0.85);
+  }
+
+  .login-footer {
+    padding: 24px 24px;
+  }
+}
+
+@media (max-width: 480px) {
+  .login-card {
+    padding: 32px 20px 24px;
+  }
+
+  .login-card__title {
+    font-size: 1.75rem;
+  }
+}
+
+/* ── Demo Credentials Section ───────────────────────────────────────── */
+.login-card__demo-info {
+  margin-top: 28px;
+  padding: 14px 18px;
+  background: rgba(229, 9, 20, 0.08);
+  border: 1px dashed rgba(229, 9, 20, 0.35);
+  border-radius: var(--radius-sm);
+  font-size: 0.8125rem;
+  color: var(--netflix-text-muted);
+}
+
+.login-card__demo-title {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-weight: 700;
+  color: var(--netflix-text);
+  margin-bottom: 8px;
+  text-transform: uppercase;
+  font-size: 0.75rem;
+  letter-spacing: 0.5px;
+}
+
+.login-card__demo-title-icon {
+  color: #e50914;
+}
+
+.login-card__demo-item {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 5px;
+  font-family: monospace;
+}
+
+.login-card__demo-label {
+  color: rgba(255, 255, 255, 0.4);
+}
+
+.login-card__demo-val {
+  color: #fff;
+}
+
