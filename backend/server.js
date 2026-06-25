@@ -7,11 +7,7 @@ const PORT = process.env.PORT || 3001;
 const JWT_SECRET = process.env.JWT_SECRET || 'netflix-clone-secret-key-2024';
 
 // ── Middleware ─────────────────────────────────────────────────────────────
-app.use(cors({
-  origin: true,
-  methods: ['GET', 'POST'],
-  credentials: true,
-}));
+app.use(cors());
 app.use(express.json());
 
 // ── Mock User Database ─────────────────────────────────────────────────────
